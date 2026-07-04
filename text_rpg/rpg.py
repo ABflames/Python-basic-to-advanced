@@ -40,7 +40,19 @@ def attack():
         
     print("You attacked the Goblin!")
     
-    print(f"Goblin Hp: {monster_hp}/{monster_max_hp}")
+    print(f"Goblin HP: {monster_hp}/{monster_max_hp}")
+    
+def heal():
+    global player_hp
+    
+    player_hp += 20
+    
+    if player_hp > player_max_hp:
+        player_hp = player_max_hp
+        
+    print("You healed yourself!")
+    print(f"Player HP: {player_hp}/{player_max_hp}")
+    
     
 display_stats()
         
@@ -59,6 +71,7 @@ if choice == "1":
     
 elif choice == "2":
     print("You chose Heal!")
+    heal()
     
 elif choice == "3":
     print("You chose Run!")
