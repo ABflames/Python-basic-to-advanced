@@ -70,33 +70,42 @@ def monster_turn():
     if player_hp == 0:
         print("You have been defeated by the Goblin!")
     
-    
-display_stats()
-        
-        
-print()
-print("Choose your action:")
-print("1. Attack")
-print("2. Heal")
-print("3. Run")
 
-choice = input("Enter your choice (1-3):")
+while player_hp > 0 and monster_hp > 0:   
+        
+        display_stats()
+                
+        print()
+        print("Choose your action:")
+        print("1. Attack")
+        print("2. Heal")
+        print("3. Run")
 
-if choice == "1":
-    print("You chose Attack!")
-    attack()
-    monster_turn()
+        choice = input("Enter your choice (1-3):")
+
+        if choice == "1":
+            attack()
+            monster_turn()
+            
+        elif choice == "2":
+            heal()
+            monster_turn()
+            
+        elif choice == "3":
+            print("You chose Run!")
+            break
+            
+        else:
+            print("Invalid choice!")
+            
+if player_hp == 0:
+    print("Game Over! You have been defeated.")
     
-elif choice == "2":
-    print("You chose Heal!")
-    heal()
-    monster_turn()
-    
-elif choice == "3":
-    print("You chose Run!")
+elif monster_hp == 0:
+    print("Congratulations! You have defeated the Goblin!")
     
 else:
-    print("Invalid choice!")
+    print("You ran away from the battle.")
     
 
         
