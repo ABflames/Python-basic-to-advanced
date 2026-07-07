@@ -29,10 +29,10 @@ def display_stats():
     print(f"HP: {monster_hp}/{monster_max_hp}")
     print(f"Attack: {monster_attack}")
     
-
-def attack():
-    global monster_hp 
-    #monster_hp = attack(monster_hp, player_attack)
+# Functions must be like machines.
+def attack(monster_hp, player_attack):
+    #global monster_hp 
+    
     monster_hp -= player_attack
     
     if monster_hp < 0:
@@ -44,9 +44,11 @@ def attack():
     
     if monster_hp == 0:
         print("You defeated the Goblin!")
+        
+    return monster_hp
 
-def heal():
-    global player_hp
+def heal(player_hp, player_max_hp):
+    #global player_hp
     
     player_hp += 20
     
@@ -56,8 +58,10 @@ def heal():
     print("You healed yourself!")
     print(f"Player HP: {player_hp}/{player_max_hp}")
     
-def monster_turn():
-    global player_hp
+    return player_hp
+    
+def monster_turn(player_hp, monster_attack):
+    #global player_hp
     
     player_hp -= monster_attack
     
@@ -70,6 +74,7 @@ def monster_turn():
     if player_hp == 0:
         print("You have been defeated by the Goblin!")
     
+    return player_hp
 
 while player_hp > 0 and monster_hp > 0:   
         
@@ -84,12 +89,17 @@ while player_hp > 0 and monster_hp > 0:
         choice = input("Enter your choice (1-3):")
 
         if choice == "1":
-            attack()
-            monster_turn()
+            monster_hp = attack(monster_hp, player_attack)
+            
+            if monster_hp > 0:
+                player_hp = monster_turn(player_hp, monster_attack)
+            
             
         elif choice == "2":
-            heal()
-            monster_turn()
+            player_hp = heal(player_hp, player_max_hp)
+            
+            if monster_hp > 0:
+                player_hp = monster_turn(player_hp, monster_attack)
             
         elif choice == "3":
             print("You chose Run!")
@@ -97,6 +107,9 @@ while player_hp > 0 and monster_hp > 0:
             
         else:
             print("Invalid choice!")
+        
+        #if monster_hp > 0:    
+        #    player_hp = monster_turn(player_hp, monster_attack)
             
 if player_hp == 0:
     print("Game Over! You have been defeated.")
