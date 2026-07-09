@@ -64,7 +64,7 @@ Python(basic_to_adv)
 ├── README.md                    ← Repository README
 │
 ├── text_rpg
-|   ├── README.md                ← RPG-specific README
+|   ├── README.md               ← RPG-specific README
 │   ├── rpg.py
 │   ├── list_practice.py
 │   └── dictionary_practice.py
