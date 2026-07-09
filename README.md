@@ -1,4 +1,4 @@
-# Python (Basic to Advanced)
+# Python Learning Journey: Basic to Advanced
 
 A collection of Python projects built from scratch while learning Python fundamentals—from basic syntax to advanced programming concepts.
 
@@ -97,16 +97,15 @@ cd Python-basic-to-advanced/text_rpg
 python3 rpg.py
 ```
 
-## 📚 What I Learned
+## 📚 Learning Outcomes
 
-Through this project, I learned how to:
+By completing these projects, I aim to strengthen my understanding of:
 
-- Design programs using functions.
-- Break large problems into smaller tasks.
-- Refactor code for better readability.
-- Use lists and dictionaries to organize data.
-- Build turn-based game logic.
-- Use Git and GitHub to track project development.
+- Problem solving with Python
+- Writing clean and modular code
+- Breaking large programs into smaller functions
+- Using Git and GitHub effectively
+- Building real-world terminal applications
 
 ## 👨‍💻 Author
 
