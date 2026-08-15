@@ -32,7 +32,7 @@ while True:
             "email": email
         }
 
-        contacts.append(contact)
+        contacts.append(contact) # takes dictionary and adds at the end of list
         #print(contacts)
         
     elif choice == "2":
@@ -49,14 +49,92 @@ while True:
                print("-" * 30)
                
     elif choice == "3":
-        print("\nSearch Contact:")
+        search_name = input("Enter the name: ") 
+        
+        found = False
+        
+        for contact in contacts:
+            if search_name == contact["name"]:
+                found = True
+                print(f"\nName : {contact['name']}") # usage of f-strings
+                print(f"Phone: {contact['phone']}")
+                print(f"Email: {contact['email']}")
+                print("-" * 30)   
+        
+        if not found:
+            print("\nNo contacts found.")
+            
     elif choice == "4":
-        print("\nUpdate Contact:")
+        update_name = input("Enter the name of the contact to update: ")
+        
+        found = False
+        #entity_update = input("What do you want to update?: \n1. Name\n2. Phone\n3. Email\nEnter your choice: ")
+        
+        for contact in contacts:
+            if update_name == contact["name"]:
+                found = True
+                print("\nContact found!")
+                print(f"\nName : {contact['name']}") # usage of f-strings
+                print(f"Phone: {contact['phone']}")
+                print(f"Email: {contact['email']}")
+                print("-" * 30) 
+                
+                entity_update = input("What do you want to update?: \n1. Name\n2. Phone\n3. Email\nEnter your choice: ")
+                
+                if entity_update == "1":
+                    new_name = input("Enter the new name: ")
+                    contact["name"] = new_name
+                    print("\nContact updated successfully!")
+                    
+                elif entity_update == "2":
+                    new_phone = input("Enter the new phone number: ")
+                    contact["phone"] = new_phone
+                    print("\nContact updated successfully!")
+                    
+                elif entity_update == "3":
+                    new_email = input("Enter the new email: ")
+                    contact["email"] = new_email
+                    print("\nContact updated successfully!")
+                    
+                else:
+                    print("Invalid choice. Please try again.")
+                    
+        if not found:
+            print("\nContact not found.")
+        
     elif choice == "5":
-        print("\nDelete Contact:")
+        remove_contact = input("Enter the contact you want to delete: ")
+        
+        found = False
+        
+        for contact in contacts:
+            if remove_contact == contact["name"]:
+                found = True
+                print("\nContact found!")
+                print(f"\nName : {contact['name']}") # usage of f-strings
+                print(f"Phone: {contact['phone']}")
+                print(f"Email: {contact['email']}")
+                print("-" * 30) 
+                
+                confirmation = input("Are you sure you want to delete this contact? (y/n): ")
+                
+                if confirmation == "y":
+                    contacts.remove(contact)
+                    print("\nContact deleted successfully!")
+                    
+                else:
+                    print("\nContact not removed!")
+                    
+        if not found:
+            print("\nContact not found.")
+                    
     elif choice == "6":
         print("Exiting the program...")
         break
     else:
         print("Invalid choice. Please try again.")
+        
+        
+
+    
     
