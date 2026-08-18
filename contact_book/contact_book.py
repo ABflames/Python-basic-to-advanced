@@ -1,10 +1,13 @@
+import json
+
 print("=" * 40)
 print("TERMINAL CONTACT BOOK".center(40)) #.center(40) method is used to center the string within a specified width.
 print("=" * 40)
 
 print()
 
-contacts = []
+with open("contacts.json", "r") as file:
+    contacts = json.load(file)
 
 print("""1. Add Contact
 2. View Contacts
@@ -34,6 +37,8 @@ while True:
 
         contacts.append(contact) # takes dictionary and adds at the end of list
         #print(contacts)
+        with open("contacts.json", "w") as file: # w -> write mode, if file doesn't exist it will create a new file
+            json.dump(contacts, file) 
         
     elif choice == "2":
        if not contacts:  # if contacts == []:
@@ -99,6 +104,9 @@ while True:
                 else:
                     print("Invalid choice. Please try again.")
                     
+                with open("contacts.json", "w") as file:
+                    json.dump(contacts, file)
+                    
         if not found:
             print("\nContact not found.")
         
@@ -120,6 +128,9 @@ while True:
                 
                 if confirmation == "y":
                     contacts.remove(contact)
+                    with open("contacts.json", "w") as file:
+                        json.dump(contacts, file)
+                        
                     print("\nContact deleted successfully!")
                     
                 else:
@@ -135,6 +146,3 @@ while True:
         print("Invalid choice. Please try again.")
         
         
-
-    
-    
