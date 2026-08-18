@@ -9,7 +9,7 @@ The goal of this repository is to strengthen problem-solving skills, write clean
 | Project                                      | Status         | Concepts Learned                                                      |
 | -------------------------------------------- | -------------- | --------------------------------------------------------------------- |
 | 🎮 Text-Based RPG Combat Simulator           | ✅ Completed    | Variables, Functions, Loops, Lists, Dictionaries, Random, Git         |
-| 📒 Terminal Contact Book                     | 🔄 In Progress | Lists, Dictionaries, CRUD Operations, Loops, Searching, Boolean Flags |
+| 📒 Terminal Contact Book                     | 🔄 In Progress | Lists, Dictionaries, CRUD Operations, Loops, Searching, Boolean Flags, JSON |
 | 🔐 Password Generator & Encrypted File Vault | ⏳ Planned      | File Handling, `random`, `secrets`                                    |
 | 💰 Terminal Budget Tracker                   | ⏳ Planned      | JSON, CSV, File Persistence                                           |
 | 🐍 Desktop Snake Game                        | ⏳ Planned      | Tkinter, Event Handling                                               |
@@ -43,7 +43,7 @@ The goal of this repository is to strengthen problem-solving skills, write clean
 Project 1  ✅ Text-Based RPG Combat Simulator
         │
         ▼
-Project 2  🔄 Terminal Contact Book
+Project 2  ✅ Terminal Contact Book
         │
         ▼
 Project 3  ⏳ Password Generator & File Vault
