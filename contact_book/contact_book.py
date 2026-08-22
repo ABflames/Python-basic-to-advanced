@@ -6,17 +6,49 @@ print("=" * 40)
 
 print()
 
-with open("contacts.json", "r") as file:
-    contacts = json.load(file)
+#try:
+#    with open("contacts.json", "r") as file:
+#        contacts = json.load(file)
+#except FileNotFoundError:
+#    contacts = []  # Initialize an empty list if the file doesn't exist
+#    print("\nNo saved contacts found. Starting with an empty contact book.")
+#except json.JSONDecodeError: # for json.load(file) i.e. invalid JSON
+#    contacts = []
+#    print("\nSaved contact data is invalid. Starting with an empty contact book.")
 
-print("""1. Add Contact
+
+def save_contacts():
+    with open("contacts.json", "w") as file:
+        json.dump(contacts, file)
+        
+def display_contact(contact):
+    print(f"\nName : {contact['name']}")
+    print(f"Phone: {contact['phone']}")
+    print(f"Email: {contact['email']}")
+    print("-" * 30)     
+        
+def load_contacts():
+    try:
+        with open("contacts.json", "r") as file:
+            return json.load(file)
+
+    except FileNotFoundError:
+        print("\nNo saved contacts found. Starting with an empty contact book.")
+        return []
+
+    except json.JSONDecodeError:
+        print("\nSaved contact data is invalid. Starting with an empty contact book.")
+        return []
+ 
+contacts = load_contacts()  # Run load_contacts(), take whatever it returns, and store that result in contacts. 
+    
+while True:
+    print("""1. Add Contact
 2. View Contacts
 3. Search Contact
 4. Update Contact
 5. Delete Contact
 6. Exit""")
-
-while True:
     
     choice = input("Enter your choice : ")
 
@@ -37,8 +69,8 @@ while True:
 
         contacts.append(contact) # takes dictionary and adds at the end of list
         #print(contacts)
-        with open("contacts.json", "w") as file: # w -> write mode, if file doesn't exist it will create a new file
-            json.dump(contacts, file) 
+        
+        save_contacts()
         
     elif choice == "2":
        if not contacts:  # if contacts == []:
@@ -48,10 +80,11 @@ while True:
               # print("\nName:", contact["name"])
               # print("Phone:", contact["phone"])
               # print("Email:", contact["email"])
-               print(f"\nName : {contact['name']}") # usage of f-strings
-               print(f"Phone: {contact['phone']}")
-               print(f"Email: {contact['email']}")
-               print("-" * 30)
+               #print(f"\nName : {contact['name']}") # usage of f-strings
+               #print(f"Phone: {contact['phone']}")
+               #print(f"Email: {contact['email']}")
+               #print("-" * 30)
+               display_contact(contact)
                
     elif choice == "3":
         search_name = input("Enter the name: ") 
@@ -61,11 +94,12 @@ while True:
         for contact in contacts:
             if search_name == contact["name"]:
                 found = True
-                print(f"\nName : {contact['name']}") # usage of f-strings
-                print(f"Phone: {contact['phone']}")
-                print(f"Email: {contact['email']}")
-                print("-" * 30)   
-        
+                #print(f"\nName : {contact['name']}") # usage of f-strings
+                #print(f"Phone: {contact['phone']}")
+                #print(f"Email: {contact['email']}")
+                #print("-" * 30)   
+                display_contact(contact)
+
         if not found:
             print("\nNo contacts found.")
             
@@ -79,11 +113,9 @@ while True:
             if update_name == contact["name"]:
                 found = True
                 print("\nContact found!")
-                print(f"\nName : {contact['name']}") # usage of f-strings
-                print(f"Phone: {contact['phone']}")
-                print(f"Email: {contact['email']}")
-                print("-" * 30) 
                 
+                display_contact(contact)
+
                 entity_update = input("What do you want to update?: \n1. Name\n2. Phone\n3. Email\nEnter your choice: ")
                 
                 if entity_update == "1":
@@ -104,8 +136,7 @@ while True:
                 else:
                     print("Invalid choice. Please try again.")
                     
-                with open("contacts.json", "w") as file:
-                    json.dump(contacts, file)
+                save_contacts()
                     
         if not found:
             print("\nContact not found.")
@@ -119,18 +150,15 @@ while True:
             if remove_contact == contact["name"]:
                 found = True
                 print("\nContact found!")
-                print(f"\nName : {contact['name']}") # usage of f-strings
-                print(f"Phone: {contact['phone']}")
-                print(f"Email: {contact['email']}")
-                print("-" * 30) 
                 
+                display_contact(contact)
+
                 confirmation = input("Are you sure you want to delete this contact? (y/n): ")
                 
                 if confirmation == "y":
                     contacts.remove(contact)
-                    with open("contacts.json", "w") as file:
-                        json.dump(contacts, file)
-                        
+                    
+                    save_contacts()
                     print("\nContact deleted successfully!")
                     
                 else:
@@ -146,3 +174,5 @@ while True:
         print("Invalid choice. Please try again.")
         
         
+# Because contacts.json is ignored by Git, you can temporarily rename it:
+#       mv contacts.json contacts_backup.json
