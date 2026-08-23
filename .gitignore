@@ -2,3 +2,4 @@ __pycache__/
 *.pyc
 .vscode/
 contact_book/contacts.json
+password_vault/passwords.txt
