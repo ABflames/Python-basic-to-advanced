@@ -21,16 +21,46 @@ try:
 except ValueError:
     print("Enter a valid number.")
     
-if valid_length:
+def generate_password(length):
     password = ""
 
     for i in range(length):
-        password += secrets.choice(characters)
+        password += secrets.choice(characters) # Generate a random character/string from the characters string
 
-    print("Generated password:", password)
+    return password
+
+def encrypt(text):
+    encrypted = ""
     
-    with open("passwords.txt", "a") as file:
+    for char in text:
+        position = characters.index(char)
+        new_position = (position + 2) % len(characters) # % -> for loop
+        encrypted_char = characters[new_position]
+        encrypted += encrypted_char
+        
+    return encrypted
+
+def decrypt(text):
+    decrypted = ""
+    
+    for char in text:
+        position = characters.index(char)
+        new_position = (position - 2) % len(characters)
+        decrypted_char = characters[new_position]
+        decrypted += decrypted_char
+    
+    return decrypted
+
+password = generate_password(length) #calling it outside of the function..
+encrypted_password = encrypt(password)
+decrypted_password = decrypt(encrypted_password)
+
+print("Generated password:", password)
+print("Encrypted password:", encrypted_password)
+print("Decrypted password:", decrypted_password)
+
+with open("passwords.txt", "a") as file: #"a" -> append mode, so it doesn't overwrite existing passwords.
         #file.write(password + "\n") # /n to avoid overwriting.
-        file.write(f"{service}: {password}\n")
+    file.write(f"{service}: {encrypted_password}\n")
         
 
