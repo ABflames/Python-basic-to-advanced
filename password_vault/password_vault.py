@@ -39,13 +39,21 @@ def decrypt(text):
     return decrypted
 
 def load_vault():
-    with open("passwords.txt", "r") as file:
-        data = file.read()
+    try:
+        with open("passwords.txt", "r") as file:
+                data = file.read()
+                
+        return data
         
-    return data
+    except FileNotFoundError:
+        return ""
 
 def add_password():
-    service = input("Enter the service name: ")
+    service = input("Enter the service name: ").strip() #.strip() removes any leading or trailing whitespace from the input string. THIS IS USED HERE JUST FOR LEARNING PURPOSE.
+
+    if not service: #here .strip() is put to use.
+        print("Service name cannot be empty.")
+        return
 
     valid_length = False
 
@@ -78,6 +86,7 @@ def view_passwords():
 
     for entry in entries:
         if ": " not in entry:
+            print(f"Invalid vault entry skipped: {entry}")
             continue
 
         service, encrypted_password = entry.split(": ", 1)
