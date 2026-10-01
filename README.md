@@ -9,8 +9,8 @@ The goal of this repository is to strengthen problem-solving skills, write clean
 | Project                                      | Status         | Concepts Learned                                                      |
 | -------------------------------------------- | -------------- | --------------------------------------------------------------------- |
 | 🎮 Text-Based RPG Combat Simulator           | ✅ Completed    | Variables, Functions, Loops, Lists, Dictionaries, Random, Git         |
-| 📒 Terminal Contact Book                     | ✅ In Progress | Lists, Dictionaries, CRUD Operations, Loops, Searching, Boolean Flags, JSON |
-| 🔐 Password Generator & Encrypted File Vault | ⏳ Planned      | File Handling, `random`, `secrets`                                    |
+| 📒 Terminal Contact Book                     | ✅ Completed | Lists, Dictionaries, CRUD Operations, Loops, Searching, Boolean Flags, JSON |
+| 🔐 Password Generator & Encrypted File Vault | ✅ Completed      | File Handling, `random`, `secrets`                                    |
 | 💰 Terminal Budget Tracker                   | ⏳ Planned      | JSON, CSV, File Persistence                                           |
 | 🐍 Desktop Snake Game                        | ⏳ Planned      | Tkinter, Event Handling                                               |
 | 💬 Multi-User Local Chat Room                | ⏳ Planned      | Socket Programming, Threading                                         |
@@ -20,22 +20,33 @@ The goal of this repository is to strengthen problem-solving skills, write clean
 
 ### ✅ Completed
 
-* Variables and Data Types
-* User Input & Output
-* Conditional Statements (`if`, `elif`, `else`)
-* Loops (`while`, `for`)
-* Functions
-* Parameters & Return Values
-* Lists
-* Dictionaries
-* List Methods (`append()`, `remove()`)
-* Searching Through Collections
-* Boolean Flag Variables
-* Dictionary Updating
-* CRUD Operations
-* Random Module
-* Basic Program Refactoring
-* Git & GitHub
+- Variables and Data Types
+- User Input & Output
+- Conditional Statements (`if`, `elif`, `else`)
+- Loops (`while`, `for`)
+- Functions
+- Parameters & Return Values
+- Lists
+- Dictionaries
+- List Methods (`append()`, `remove()`)
+- Searching Through Collections
+- Boolean Flag Variables
+- Dictionary Updating
+- CRUD Operations
+- Random Module
+- `secrets` Module
+- File Handling with `open()`
+- Reading and Writing Text Files
+- String Manipulation
+- `split()` and `splitlines()`
+- Exception Handling (`try`, `except`)
+- `FileNotFoundError`
+- Input Validation
+- Encryption and Decryption Logic
+- Modulo Arithmetic
+- Basic Program Refactoring
+- Menu-Driven Programs
+- Git & GitHub
 
 ## 📈 Learning Progress
 
@@ -46,7 +57,7 @@ Project 1  ✅ Text-Based RPG Combat Simulator
 Project 2  ✅ Terminal Contact Book
         │
         ▼
-Project 3  ⏳ Password Generator & File Vault
+Project 3  ✅ Password Generator & File Vault
         │
         ▼
 Project 4  ⏳ Budget Tracker
@@ -65,6 +76,7 @@ Project 7  ⏳ Bank Account Management System
 
 ```text
 Python(basic_to_adv)
+
 │
 ├── README.md
 │
@@ -78,11 +90,15 @@ Python(basic_to_adv)
 │   └── contact_book.py
 │
 ├── password_vault
+│   └── password_vault.py
+│
 ├── budget_tracker
+│
 ├── snake_game
+│
 ├── chat_room
+│
 └── bank_management
-```
 
 ## ▶️ How to Run
 
@@ -108,13 +124,16 @@ python3 contact_book.py
 
 By completing these projects, I aim to strengthen my understanding of:
 
-* Problem solving with Python
-* Writing clean and modular code
-* Breaking large programs into smaller functions
-* Working with structured data
-* Building CRUD-based applications
-* Using Git and GitHub effectively
-* Building real-world terminal applications
+->Problem solving with Python
+->Writing clean and modular code
+->Breaking large programs into smaller functions
+->Working with structured data
+->Building CRUD-based applications
+->Handling files and persistent data
+->Handling errors and invalid user input
+->Understanding basic encryption/decryption logic
+->Using Git and GitHub effectively
+->Building real-world terminal applications
 
 ## 👨‍💻 Author
 
