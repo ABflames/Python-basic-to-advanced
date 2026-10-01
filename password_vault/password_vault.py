@@ -7,19 +7,6 @@ characters = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789!@#$
 
 #for i in range(8):
 #    password += secrets.choice(characters)
-
-valid_length = False
-
-try:
-    service = input("Enter the service name: ")
-    length = int(input("Enter password length: "))
-    
-    if length > 0:
-        valid_length = True
-    else:
-        print("Password length must be a positive integer(< 0).")        
-except ValueError:
-    print("Enter a valid number.")
     
 def generate_password(length):
     password = ""
@@ -51,16 +38,78 @@ def decrypt(text):
     
     return decrypted
 
-password = generate_password(length) #calling it outside of the function..
-encrypted_password = encrypt(password)
-decrypted_password = decrypt(encrypted_password)
-
-print("Generated password:", password)
-print("Encrypted password:", encrypted_password)
-print("Decrypted password:", decrypted_password)
-
-with open("passwords.txt", "a") as file: #"a" -> append mode, so it doesn't overwrite existing passwords.
-        #file.write(password + "\n") # /n to avoid overwriting.
-    file.write(f"{service}: {encrypted_password}\n")
+def load_vault():
+    with open("passwords.txt", "r") as file:
+        data = file.read()
         
+    return data
 
+def add_password():
+    service = input("Enter the service name: ")
+
+    valid_length = False
+
+    try:
+        length = int(input("Enter password length: "))
+
+        if length > 0:
+            valid_length = True
+        else:
+            print("Password length must be greater than 0.")
+
+    except ValueError:
+        print("Please enter a valid number.")
+
+    if valid_length:
+        password = generate_password(length)
+        encrypted_password = encrypt(password)
+
+        print("Generated password:", password)
+        print("Encrypted password:", encrypted_password)
+
+        with open("passwords.txt", "a") as file:
+            file.write(f"{service}: {encrypted_password}\n")
+
+def view_passwords():
+    vault_data = load_vault()
+    entries = vault_data.splitlines()
+
+    found = False
+
+    for entry in entries:
+        if ": " not in entry:
+            continue
+
+        service, encrypted_password = entry.split(": ", 1)
+        password = decrypt(encrypted_password)
+
+        print(f"Service: {service}")
+        print(f"Password: {password}")
+        print("-" * 30)
+        
+        found = True
+        
+    if not found:
+        print("No passwords found in the vault.")    
+        
+        
+while True:
+    print("\n===== PASSWORD VAULT =====")
+    print("1. Add Password")
+    print("2. View Passwords")
+    print("3. Exit")
+
+    choice = input("Enter your choice: ")
+
+    if choice == "1":
+        add_password()
+
+    elif choice == "2":
+        view_passwords()
+
+    elif choice == "3":
+        print("Exiting password vault...")
+        break
+
+    else:
+        print("Invalid choice. Please try again.")
