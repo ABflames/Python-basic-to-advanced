@@ -9,7 +9,7 @@ expenses = [] # an exmpty list
 
 choice = "yes"
 #total = 0
-category_totals = {}
+category_totals = {} #another dictionary
 
 while choice == "yes":
 
@@ -27,7 +27,14 @@ while choice == "yes":
     #print (expenses)
     choice = input("Add another expense? (yes/no): ")
     
-print("All expenses: ", expenses)
+#print("All expenses: ", expenses)
+
+print("\nYOUR EXPENSES")
+
+for index, expense in enumerate(expenses, start=1):
+    #print(index, expense)
+    #print(index, expense["category"], ":", expense["description"], ":", "₹", expense["amount"])
+    print(f"{index}. {expense['category']} : {expense['description']} : ₹{expense['amount']:.2f}")
 
 for expense in expenses:
     #total = total + expense["amount"]
